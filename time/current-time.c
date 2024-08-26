@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
  //Obtain and display the elapsed time since the Epoch.
  time_t current_linux_time;
  current_linux_time = time(NULL);
- printf("The number of seconds since the Great Epoch is %lu\n",current_linux_time);
+ printf("The number of seconds since the Great Epoch is %lu\n", current_linux_time);
  //Use the Linux time computed immediately above and convert it to broken time (human manageable 
  //time) in the current time zone.
  struct tm * broken = localtime(&current_linux_time);
