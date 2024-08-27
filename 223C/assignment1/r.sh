@@ -8,6 +8,5 @@ gcc -m64 -no-pie -o main.out *.o -std=c17
 echo "Program Start:"
 
 rm *.o
-rm *.out
 
 ./main.out

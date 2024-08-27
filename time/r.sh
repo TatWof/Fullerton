@@ -23,5 +23,3 @@ echo "Run the program Simple Time:"
 
 echo "The script file will terminate"
 
-rm *.o
-rm *.out
