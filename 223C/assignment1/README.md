@@ -1,5 +1,16 @@
 This is a README markdown text file for the End User with instructions for how to compile and run.
 
+# Program Information
+Name: Assignment 1 Trigonometry
+
+Purpose: getting used to C libraries with simple IO, time, and math
+
+Due Date: 09/08/2024 - 23:59:00
+
+## Compatibility
+- Windows: working
+- Linux (Ubuntu): working
+
 # Compiling Instructions
 In a terminal with a directory opened to this file's directory, input the following command based on your operating system:
 - On Linux: `./r.sh`
@@ -22,12 +33,6 @@ Developer Billy Leong
 Email: bleong@csu.fullerton.edu
 
 Course ID: CPSC223C
-
-Due Date: 09/08/2024 - 23:59:00
-
-Program Name: Assignment 1 Trigonometry
-
-Purpose: getting used to C libraries with simple IO, time, and math
 
 Github Repo: https://github.com/TatWof/Fullerton
 
