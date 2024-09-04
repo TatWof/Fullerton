@@ -1,5 +1,7 @@
 #/bin/bash
 
+chmod u=x r.sh
+
 rm *.o
 rm *.out
 
