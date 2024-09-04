@@ -29,4 +29,6 @@ Program Name: Assignment 1 Trigonometry
 
 Purpose: getting used to C libraries with simple IO, time, and math
 
+Github Repo: https://github.com/TatWof/Fullerton
+
 OS: Windows 11
