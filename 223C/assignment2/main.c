@@ -10,25 +10,45 @@
 
 #include "stdio.h"
 #include "string.h"
+#include "stdlib.h"
 
-extern file2string(char*, int, FILE*);
-void tokenize(char*);
+extern char* file2string(char*);
+void tokenize(char*, char*);
 
 int main(int argc, char const *argv[])
 {
-    FILE* filename;
-    int stringSize;
+    char filename[] = "test.txt";
+    char* buffer;
+    char* token;
+    char** tokens;
+    int delim = '.';
+    int k = 0;
+    int i = 0;
+    int h = 0;
+    int j = 0;
 
-    fseek(filename, 0 ,SEEK_END);
-    stringSize = ftell(filename);
-    
-    char string[stringSize];
+    printf("%s\n", filename);
 
-    file2string(string, stringSize, filename);
+    buffer = file2string(filename);
+    for (j = 0; buffer[j] != 0 ; j++)
+    {
+        if (buffer[j] == delim)
+        {
+            token = (char*)malloc(j * sizeof(char));
+            
+            
 
+            
+            printf("%s\n", token);
+            tokens[k] = token;
+            k++;
+        }
+    }
 
-
-
+    printf("the number of tokens is %d\n", k+1);
+    for (i = 0; i < k; i++)
+    {
+        printf("#%d is %s\n", i, tokens[i]);
+    }
     return 0;
 }
-
