@@ -23,7 +23,7 @@ char* file2string(char* filename)
     {
         printf("File has failed to open or create please restart and try again.\n");
         printf( "Error opening file: %s\n", strerror( errno ) ); 
-        return 0;
+        return NULL;
     }
 
     fseek(file, 0L , SEEK_END);

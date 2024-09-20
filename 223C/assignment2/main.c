@@ -32,9 +32,9 @@ struct TokenList* TokenList_resize(struct TokenList*);
 
 int main(int argc, char const *argv[])
 {
-    char* filename = "test.txt";
+    char* filename = (char*)malloc(101 * sizeof(char));
     char* buffer;
-    int delim = '.';
+    int delim;
     char charbuffer;
     struct TokenList* t;
 
@@ -42,14 +42,20 @@ int main(int argc, char const *argv[])
     printf("This program is maintained by: Billy Leong\n");
     printf("Please input the file to be tokenized: ");
     scanf("%s", filename);
+    scanf("%c", &charbuffer); /* gets rid of the extra newline */
+
     
+    printf("The file name is: %s\n", filename);
     
     buffer = file2string(filename);
+
+    if (buffer == NULL) return 0;
+    
 
     printf("The complete string taken from the file is: %s\n", buffer);
 
     printf("Please enter the seperator character: ");
-    scanf("%c", charbuffer);
+    scanf("%c", &charbuffer);
 
     delim = (int)charbuffer;
 
@@ -60,6 +66,7 @@ int main(int argc, char const *argv[])
     {
         printf("[#%d] %s\n", i + 1, t->tokens[i]);
     }
+    free(filename);
     free(buffer);
     TokenList_Destruct(t);
     return 0;
