@@ -2,7 +2,7 @@
     Name: Billy Leong
     Email: bleong@csu.fullerton.edu
     Course ID: CPSC223C
-    Due Date: 00/00/2024 - 23:59:00
+    Due Date: 09/22/2024 - 23:59:00
     Program Name:
     Purpose:
     OS: Windows 11
@@ -17,7 +17,7 @@ char* file2string(char* filename)
     FILE* file;
     int stringSize;
     char* string;
-
+    int i;
     file = fopen(filename, "r");
     if(file == NULL) 
     {
@@ -27,15 +27,18 @@ char* file2string(char* filename)
     }
 
     fseek(file, 0L , SEEK_END);
-    stringSize = ftell(file);
-    
+    stringSize = ftell(file) + 1;
     string = (char *)malloc(stringSize * sizeof(char));
 
     fseek(file, 0L , SEEK_SET);
 
-    fgets(string, stringSize, file);
+    for (i = 0; i < stringSize - 1; i++)
+    {
+        string[i] = (char)fgetc(file);
+    }
+    string[i] = 0;
 
-    printf("%s\n", string);
+//    fgets(string, stringSize, file);
 
     fclose(file);
 
