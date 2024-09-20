@@ -22,7 +22,6 @@ char* file2string(char* filename)
     if(file == NULL) 
     {
         printf("File has failed to open or create please restart and try again.\n");
-        printf( "Error opening file: %s\n", strerror( errno ) ); 
         return NULL;
     }
 
