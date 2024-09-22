@@ -19,6 +19,13 @@ In a terminal with a directory opened to this file's directory, input the follow
 
 The Linux bash will automatically run the program after it finishes compiling. To run the output executable file on Windows use the command `./main.out`
 
+# Changelog
+## Version 1
+Source code uses a struct with a custom tokenizer function
+
+## Version 2
+Altered source code to use strtok() function instead of custom tokenizer
+
 # Known Issues
 - printing strings is also printing ending trash data
     - Identified: C-strings requires null-termination

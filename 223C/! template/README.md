@@ -21,6 +21,8 @@ The Linux bash will automatically run the program after it finishes compiling. T
 
 # Known Issues
 
+# Changelog
+
 # Credits
 
 Developer Billy Leong
