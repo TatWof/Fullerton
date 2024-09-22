@@ -27,7 +27,6 @@ extern char* file2string(char*);
 void TokenList_Construct(struct TokenList*, int, int);
 void TokenList_Destruct(struct TokenList*);
 struct TokenList* tokenize(char*, int);
-struct TokenList* tokenize_(char*, char*);
 struct TokenList* TokenList_resize(struct TokenList*);
 
 
@@ -36,7 +35,6 @@ int main(int argc, char const *argv[])
     char* filename = (char*)malloc(101 * sizeof(char));
     char* buffer;
     int delim;
-    char* delims = (char*)malloc(128 * sizeof(char));
     char charbuffer;
     struct TokenList* t;
 
@@ -56,15 +54,11 @@ int main(int argc, char const *argv[])
     printf("The complete string taken from the file is: %s\n", buffer);
 
     printf("Please enter the seperator characters: ");
-    scanf("%s", delims);
     scanf("%c", &charbuffer);
 
-    // scanf("%c", &charbuffer);
+    delim = (int)charbuffer;
 
-    // delim = (int)charbuffer;
-
-    // t = tokenize(buffer, delim);
-    t = tokenize_(buffer, delims);
+    t = tokenize(buffer, delim);
 
     printf("the number of tokens is %d\n", t->tokenQty);
     for (int i = 0; i < t->tokenQty; i++)
@@ -73,8 +67,7 @@ int main(int argc, char const *argv[])
     }
     free(filename);
     free(buffer);
-    free(delims);
-    //TokenList_Destruct(t);
+    TokenList_Destruct(t);
     return 0;
 }
 
@@ -135,25 +128,6 @@ struct TokenList* tokenize(char* buffer, int delim)
             h = j + 1;
         }
         if (buffer[j] == 0) break;
-    }
-    return t;
-}
-
-struct TokenList* tokenize_(char* buffer, char* delims)
-{
-    struct TokenList* t = (struct TokenList*)malloc(1 * sizeof(struct TokenList));
-
-    TokenList_Construct(t, DEFAULT_TOKENS_SIZE, 0);
-
-    t->tokens[t->tokenQty] = strtok(buffer, delims);
-    if(t->tokens[t->tokenQty] == NULL) return t;
-    t->tokenQty++; 
-    while(1)
-    {
-        if(t->tokenQty >= t->maxTokens) t = TokenList_resize(t);
-        t->tokens[t->tokenQty] = strtok(NULL, delims);
-        if(t->tokens[t->tokenQty] == NULL) break;
-        t->tokenQty++;
     }
     return t;
 }
