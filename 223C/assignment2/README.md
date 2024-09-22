@@ -8,8 +8,8 @@ Purpose: File IO and string processing
 Due Date: 09/22/2024
 
 ## Compatibility
-- Windows: working
-- Linux (Ubuntu): na
+- Windows: stable
+- Linux (Ubuntu): working
 
 # Compiling Instructions
 In a terminal with a directory opened to this file's directory, input the following command based on your operating system:
@@ -29,7 +29,7 @@ The Linux bash will automatically run the program after it finishes compiling. T
 - shell file fails while running compiling commands
     - Identified: multiple source code files have to be compiled individually
     - Fixed: individual compile instructions added to shell files
-- token list is statically sized, may cause issues of the number of tokens exceeds arbitrary limit
+- token list is statically sized, may cause issues if the number of tokens exceeds arbitrary limit
     - Feature: token list is now dynamically sized.
 # Credits
 

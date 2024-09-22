@@ -24,14 +24,18 @@ struct TokenList
 
 extern char* file2string(char*);
 
-struct TokenList* tokenize(char*, char*);
 void TokenList_Construct(struct TokenList*, int, int);
 void TokenList_Destruct(struct TokenList*);
+struct TokenList* tokenize(char*, int);
+struct TokenList* tokenize_(char*, char*);
+struct TokenList* TokenList_resize(struct TokenList*);
+
 
 int main(int argc, char const *argv[])
 {
     char* filename = (char*)malloc(101 * sizeof(char));
     char* buffer;
+    int delim;
     char* delims = (char*)malloc(128 * sizeof(char));
     char charbuffer;
     struct TokenList* t;
@@ -55,7 +59,12 @@ int main(int argc, char const *argv[])
     scanf("%s", delims);
     scanf("%c", &charbuffer);
 
-    t = tokenize(buffer, delims);
+    // scanf("%c", &charbuffer);
+
+    // delim = (int)charbuffer;
+
+    // t = tokenize(buffer, delim);
+    t = tokenize_(buffer, delims);
 
     printf("the number of tokens is %d\n", t->tokenQty);
     for (int i = 0; i < t->tokenQty; i++)
@@ -65,6 +74,7 @@ int main(int argc, char const *argv[])
     free(filename);
     free(buffer);
     free(delims);
+    //TokenList_Destruct(t);
     return 0;
 }
 
@@ -91,12 +101,45 @@ struct TokenList* TokenList_resize(struct TokenList* t)
 
 void TokenList_Destruct(struct TokenList* t)
 {
+    for (int i = 0; i < t->tokenQty; i++)
+        free(t->tokens[i]);
+    
     free(t->tokens);
     free(t);
 }
 
+struct TokenList* tokenize(char* buffer, int delim)
+{
+    struct TokenList* t = (struct TokenList*)malloc(1 * sizeof(struct TokenList));
+    char* token;
+    int i = 0;
+    int h = 0;
+    int j = 0;
+    
+    TokenList_Construct(t, DEFAULT_TOKENS_SIZE, 0);
+    
+    for (j = 0;; j++)
+    {
+        if (buffer[j] == delim || buffer[j] == 0)
+        {
+            token = (char*)malloc( (j - h + 1) * sizeof(char));
+            
+            for (i = 0; i < (j - h); i++)
+                token[i] = buffer[h + i];
+            token[i] = 0;
 
-struct TokenList* tokenize(char* buffer, char* delims)
+            if (t->tokenQty >= t->maxTokens) t = TokenList_resize(t); 
+
+            t->tokens[t->tokenQty] = token;
+            t->tokenQty++;
+            h = j + 1;
+        }
+        if (buffer[j] == 0) break;
+    }
+    return t;
+}
+
+struct TokenList* tokenize_(char* buffer, char* delims)
 {
     struct TokenList* t = (struct TokenList*)malloc(1 * sizeof(struct TokenList));
 
