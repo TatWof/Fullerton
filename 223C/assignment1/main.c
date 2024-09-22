@@ -46,7 +46,7 @@ int main(int argc, char const *argv[])
     scanf("%lf %lf %lf", &side_a, &side_b, &angle);
     printf("You entered side 1: %5.5lf, side 2: %5.5lf, angle: %5.5lf\n", side_a, side_b, angle);
 
-    if(side_a > 0 || side_b > 0 || angle > 0)
+    if(side_a > 0 && side_b > 0 && angle > 0)
     {
         area_triangle = compute_area(side_a, side_b, angle);
         side_c = compute_side_c(side_a, side_b, angle);
@@ -60,7 +60,6 @@ int main(int argc, char const *argv[])
 
 
     //Program exit
-    printf("The number of seconds since the Great Epoch is %lu\n", time(NULL));
     printf("Have a nice day.\n");
     printf("An integer 0 will be sent to the operating system as a signal of successful execution.  Bye.\n");
 
@@ -77,5 +76,5 @@ double compute_side_c(double s1, double s2, double phi)
 {
     const double pi = 3.14159;
 
-    return sqrt((s1 * s1) + (s2 * s2) + (2 * s1 * s2 * cos(phi * pi / 180.0)));
+    return sqrt((s1 * s1) + (s2 * s2) - (2 * s1 * s2 * cos(phi * pi / 180.0)));
 }

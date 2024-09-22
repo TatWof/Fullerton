@@ -28,6 +28,9 @@ Altered source code to use strtok() function instead of custom tokenizer
 
 Old version of the main file can be seen in the `/archive` folder.
 
+### 2.1
+added documentation
+
 # Known Issues
 - printing strings is also printing ending trash data
     - Identified: C-strings requires null-termination
