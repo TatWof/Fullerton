@@ -27,7 +27,7 @@ char* file2string(char* filename)
 
     fseek(file, 0L , SEEK_END);
     stringSize = ftell(file) + 1;
-    printf("%d characters have been read\n", stringSize);
+    printf("There are %d characters in the file.\n", stringSize);
     string = (char *)malloc(stringSize * sizeof(char));
 
     fseek(file, 0L , SEEK_SET);
