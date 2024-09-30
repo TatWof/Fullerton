@@ -12,7 +12,7 @@
 #include "string.h"
 #include "stdlib.h"
 
-/*
+/* Coverts file content to string
  * opens a file and copys the contents into a string to return
  * 
  * params: name of the file
