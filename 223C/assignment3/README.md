@@ -24,6 +24,10 @@ The Linux bash will automatically run the program after it finishes compiling. T
     - Test: passed, no further action required
 
 # Changelog
+## v1
+
+## v2
+- changed stringsearch to use strstr() instead of a custom substring searcher
 
 # Credits
 

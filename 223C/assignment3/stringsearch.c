@@ -33,7 +33,7 @@ struct Pair** stringsearch(char** stringArr, char* key)
             ++j;           // update so that the next string starts on the character after this match
             ++count;                                            // update number of matches found
         }
-        else        // go to next line
+        else        // no matches found, go to next line
         {
             ++i;
             j = 0;  // reset j to zero
