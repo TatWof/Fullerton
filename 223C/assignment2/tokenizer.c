@@ -42,7 +42,7 @@ void TokenList_Destruct(struct TokenList*);
 
 int main(int argc, char const *argv[])
 {
-    char* filename = (char*)malloc(101 * sizeof(char));
+    char* filename = (char*)malloc(128 * sizeof(char));
     char* buffer;
     char* delims = (char*)malloc(128 * sizeof(char));
     char charbuffer;
