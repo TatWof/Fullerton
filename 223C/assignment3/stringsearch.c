@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 #include "pair.h"
 
 void keyMatch(struct Pair**, char**, char*, int, int, int*);
@@ -19,15 +19,25 @@ struct Pair** stringsearch(char** stringArr, char* key)
     int i = 0;
     int j = 0;
     int count = 0;
+    char* match;
 
     while (stringArr[i] != NULL) // if current address is not a null address, ie the end of the array
     {
-        for (j = 0; stringArr[i][j] != 0 ; j++) // go char by char over the string
+        match = strstr(stringArr[i] + j, key);  // returns address of the first match 
+        if (match != NULL)                      // null means no matches were found
         {
-            if(stringArr[i][j] == key[0])                         // if the char matches the begining char of the key then 
-                keyMatch(pairs, stringArr, key, i, j, &count);    // see if the rest matches
+            j = match - stringArr[i];                           // j = # of char relative to the beginning of the string
+            pairs[count] = malloc(1 * sizeof(struct Pair));     // allocate memory for the pair
+            pairs[count]->row = i;                              // put in the info
+            pairs[count]->col = j;
+            ++j;           // update so that the next string starts on the character after this match
+            ++count;                                            // update number of matches found
         }
-        ++i; // next string
+        else        // go to next line
+        {
+            ++i;
+            j = 0;  // reset j to zero
+        }
     }
     pairs[count] = 0;   // terminating the pair pointer array
     printf("%d matches have been found\n", count);
@@ -35,30 +45,4 @@ struct Pair** stringsearch(char** stringArr, char* key)
     if (count > 0) return pairs;        // only return the pointer array if there are matches, else return null
     free(pairs); // deallocate mem
     return NULL;
-}
-
-/* Key Match
- * sees if the intial match also leads to a full match of the key
- *  
- * params:
- * - array of pair pointers
- * - string array
- * - the key
- * - row of the string array that caused inital match 
- * - column of the string array that caused inital match
- * - number of current pairs stored (pass by reference)
-*/
-void keyMatch(struct Pair** pairs, char** stringArr, char* key, int row, int col, int* pairNum)
-{
-    int i = 0;
-    while (stringArr[row][col + i] == key[i]) { ++i; }      // char by char making sure it matches, if not this stops
-    if(key[i] == 0)                                         // end of the key reached means that the key was found
-    {
-        pairs[*pairNum] = malloc(1 * sizeof(struct Pair));  // allocate the space
-        pairs[*pairNum]->row = row;                         // putting in the location info
-        pairs[*pairNum]->col = col;
-        (*pairNum)++;                                       // updating the number of pairs given
-    }
-    
-    return;
 }

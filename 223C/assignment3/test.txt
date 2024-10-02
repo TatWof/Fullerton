@@ -3,5 +3,5 @@ abc
 gamma
 
 111111ab
-000ab0
+000ab000
 0ababa0
