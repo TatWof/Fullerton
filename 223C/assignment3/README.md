@@ -1,15 +1,15 @@
 This is a README markdown text file for the End User with instructions for how to compile and run.
 
 # Program Information
-Name:
+Name: Sub String Searcher
 
-Purpose:
+Purpose: more file io, substring searching and matching 
 
-Due Date:
+Due Date: 10/14/2024
 
 ## Compatibility
-- Windows: na
-- Linux (Ubuntu): na
+- Windows: stable (v1)
+- Linux (Ubuntu): stable (v1)
 
 # Compiling Instructions
 In a terminal with a directory opened to this file's directory, input the following command based on your operating system:
