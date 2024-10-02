@@ -24,16 +24,16 @@ struct Pair** stringsearch(char** stringArr, char* key)
     {
         for (j = 0; stringArr[i][j] != 0 ; j++) // go char by char over the string
         {
-            if(stringArr[i][j] == key[0])                               // if the char matches the begining char of the key then 
+            if(stringArr[i][j] == key[0])                         // if the char matches the begining char of the key then 
                 keyMatch(pairs, stringArr, key, i, j, &count);    // see if the rest matches
         }
         ++i; // next string
     }
-    pairs[count] = 0; // terminating the pair pointer array
+    pairs[count] = 0;   // terminating the pair pointer array
     printf("%d matches have been found\n", count);
     
-    if (count > 0) return pairs;
-    free(pairs);
+    if (count > 0) return pairs;        // only return the pointer array if there are matches, else return null
+    free(pairs); // deallocate mem
     return NULL;
 }
 
@@ -51,8 +51,8 @@ struct Pair** stringsearch(char** stringArr, char* key)
 void keyMatch(struct Pair** pairs, char** stringArr, char* key, int row, int col, int* pairNum)
 {
     int i = 0;
-    while (stringArr[row][col + i] == key[i]) { ++i; } // char by char making sure it matches, if not this stops
-    if(key[i] == 0) // end of the key reached means that the key was found
+    while (stringArr[row][col + i] == key[i]) { ++i; }      // char by char making sure it matches, if not this stops
+    if(key[i] == 0)                                         // end of the key reached means that the key was found
     {
         pairs[*pairNum] = malloc(1 * sizeof(struct Pair));  // allocate the space
         pairs[*pairNum]->row = row;                         // putting in the location info

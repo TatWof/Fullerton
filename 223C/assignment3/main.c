@@ -34,6 +34,7 @@ int main(int argc, char const *argv[])
     printf("Please enter the name of the file you wish to search: ");
     scanf("%s", filename);
     scanf("%c", &charbuf);
+    printf("Confirming file name => %s", filename);
 
 
     stringArr = file2array(filename);   // open and copy file contents
@@ -49,12 +50,9 @@ int main(int argc, char const *argv[])
 
     //print file contents
     printf("Here are the contents of the array:\n");
-    i = 0;
-    while (stringArr[i] != NULL)
-    {
+    for (i = 0; stringArr[i] != NULL; ++i)
         printf("[%d] %s\n", i, stringArr[i]);
-        ++i;
-    };
+
 
     // get key from user
     printf("\n\nPlease enter the string you wish to search: ");
@@ -82,33 +80,26 @@ int main(int argc, char const *argv[])
 
     // print match pairs 
     printf("Showing positions of matches:\n");
-    i = 0;
-    while (pairs[i] != NULL)
-    {
+    for (i = 0; pairs[i] != NULL; ++i)
         printf("[match %2d] (%3d, %3d)\n", i, pairs[i]->row, pairs[i]->col);
-        ++i;
-    }
+
 
     //print continued strings
     printf("\nShowing continued strings at key\n");
-    i = 0;
-    while(pairs[i] != NULL)
+    for (i = 0; pairs[i] != NULL; ++i)
     {
         
-        for (j = 0; stringArr[pairs[i]->row][pairs[i]->col + j] != 0 ; j++)
-        {
+        for (j = 0; stringArr[pairs[i]->row][pairs[i]->col + j] != 0 ; j++)  
             buffer[j] = stringArr[pairs[i]->row][pairs[i]->col + j];
-        }
+
         buffer[j] = 0;
-        
 
         printf("Match %2d begins string %s\n", i, buffer);
-        ++i;
     }
+
 
     // Goodbye
     printf("Thank you for using this program.\n");
-
 
     // deallocate memory
     for (i = 0; stringArr[i] != 0; i++)

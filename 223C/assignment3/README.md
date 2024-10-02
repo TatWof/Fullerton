@@ -21,7 +21,7 @@ The Linux bash will automatically run the program after it finishes compiling. T
 
 # Known Issues
 - file2array() may not work with an empty file
-    - Test: 
+    - Test: passed, no further action required
 
 # Changelog
 

@@ -37,9 +37,9 @@ char** file2array(char* filename) // tested
         buffer[k] = (char)charbuffer;   // put it into the buffer
         ++count;
         ++k;
-        if (charbuffer == '\n' || charbuffer == EOF)
+        if (charbuffer == '\n' || charbuffer == EOF)    // if new line or end of file
         {
-            stringArr[i] = malloc((k) * sizeof(char)); // assign memory for the string
+            stringArr[i] = malloc((k) * sizeof(char));  // assign memory for the string
 
             for (j = 0; j < k - 1; j++) stringArr[i][j] = buffer[j]; // move everything from the buffer into the new string
             
@@ -47,7 +47,8 @@ char** file2array(char* filename) // tested
 
             ++i;                 // next place in the address 
             k = 0;               // reset character count and buffer pointer
-            if (charbuffer == EOF) break;
+            
+            if (charbuffer == EOF) break;   // end of file reached
         }
     }
     stringArr[i] = 0;
