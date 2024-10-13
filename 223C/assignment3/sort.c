@@ -1,10 +1,16 @@
 
+void swap_char_star(char**, char**);
+void swap_int(int*, int*);
 
 int sort(char** stringArr, int count)
 {
     int strlen[count];
     int i, j, k;
     int min, max;
+
+    if(count < 1) return 1;
+    if(count == 1) return 0;
+    if(stringArr == 0 || stringArr[0] == 0) return 1;
     
     for (k = 0; k < count; ++k)
     {
@@ -15,29 +21,29 @@ int sort(char** stringArr, int count)
     for(k = 0, j = count - 1; k < j; ++k, --j)
     {
         min = k, max = j;
-        for (i = 0; i < count; ++i)
+        for (i = k; i <= j; ++i)
         {
             if (strlen[i] < strlen[min]) min = i;
             if (strlen[i] > strlen[max]) max = i; 
         }
         
-        swap(&strlen[min], &strlen[j]);
-        swap(&stringArr[min], &stringArr[j]);
-        swap(&strlen[max], &strlen[k]);
-        swap(&stringArr[max], &stringArr[k]);
+        swap_int(&strlen[min], &strlen[k]);
+        swap_char_star(&stringArr[min], &stringArr[k]);
+        swap_int(&strlen[max], &strlen[j]);
+        swap_char_star(&stringArr[max], &stringArr[j]);
     }
 }
 
-void swap(char** a, char** b)
+void swap_char_star(char** a, char** b)
 {
     char* c = *a;
     *a = *b;
-    *b = *c;
+    *b = c;
 }
 
-void swap(int* a, int* b)
+void swap_int(int* a, int* b)
 {
-    int* c = *a;
+    int c = *a;
     *a = *b;
-    *b = *c;
+    *b = c;
 }

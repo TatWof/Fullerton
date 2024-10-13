@@ -15,9 +15,8 @@ int copy(char* filename, char** stringArr, int maxsize)
     FILE* file;
     char* buffer = malloc(2048 * sizeof(char));
     int charbuffer; 
-    int count;
-    int i;
-    int k = 0;
+    int count = 0;
+    int i, k;
 
     file = fopen(filename, "r");
 
@@ -25,11 +24,13 @@ int copy(char* filename, char** stringArr, int maxsize)
     {
         printf("File has failed to open or create please restart and try again.\n");
         free(buffer);
-        return NULL;
+        return 0;
     }
 
+    k = 0;
     while (1)
     {
+        if(count >= maxsize) break;
         charbuffer = fgetc(file);
         buffer[k] = charbuffer;
         ++k;
