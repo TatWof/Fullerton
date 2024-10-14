@@ -10,13 +10,17 @@
 */
 int show_cfreq(struct FREQ** freqs)
 {
+    int cbuf;
     // if no frequency table exit
     if (freqs == 0) return 1;
     
     // print code character and frequency of character. special characters will break the table, this is expected behavior
     printf("code   ascii   frequency\n");
     for (int i = 0; i < 256; i++)
-       printf("%3d %7c %5d\n", freqs[i]->code, (freqs[i]->code), freqs[i]->freq);
-    
+    {
+       cbuf = freqs[i]->code;
+       if (cbuf < 32) cbuf = ' ';
+       printf("%3d %7c %5d\n", freqs[i]->code, cbuf, freqs[i]->freq);
+    }
     return 0;
 }

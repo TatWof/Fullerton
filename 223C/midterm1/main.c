@@ -12,9 +12,11 @@
 
 /* Tasks:
  * get char from files
- * get frequencies
+ * calc frequencies
  * print 3-col array {ascii code, ascii char, frequency}
  * sort by frequency
+ * print sorted array
+ * goodbye
 */
 
 #include "freq.h"
@@ -55,7 +57,7 @@ int main(int argc, char const *argv[])
     }
     
     // show frequencies
-    printf("\n\nShowing frequencies.\nSpecial characters may break the table, this is expected behavior\n");
+    printf("\n\nShowing frequencies.\n");
     if(show_cfreq(freq) == 1)
     {
         printf("Error while printing.\n");
@@ -73,7 +75,7 @@ int main(int argc, char const *argv[])
     }
     else
     {
-        printf("\n\nShowing the table sorted by frequencies.\nSpecial characters may break the table, this is expected behavior\n");
+        printf("\n\nShowing the table sorted by frequencies.\n");
         if(show_cfreq(freq) == 1)
             printf("Error while printing.\nPlease try again.\n");
     }
