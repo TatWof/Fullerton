@@ -13,10 +13,10 @@
 int copy(char* filename, char** stringArr, int maxsize)
 {
     FILE* file;
-    char* buffer = malloc(2048 * sizeof(char));
-    int charbuffer; 
-    int count = 0;
-    int i, k;
+    char* buffer = malloc(2048 * sizeof(char)); // allocates a temporary buffer to store characters read from the file in 
+    int charbuffer; // to grab a single character 
+    int count = 0;  // counts number of lines read
+    int i, k;       // counter control
 
     file = fopen(filename, "r");
 
@@ -30,24 +30,27 @@ int copy(char* filename, char** stringArr, int maxsize)
     k = 0;
     while (1)
     {
-        if(count >= maxsize) break;
-        charbuffer = fgetc(file);
-        buffer[k] = charbuffer;
-        ++k;
-        if (charbuffer == '\n' || charbuffer == EOF)
-        {
-            stringArr[count] = malloc(k * sizeof(char));
+        if(count > maxsize) break; /* if ran out of space in the string then array exit the loop*/
 
-            for (i = 0; i < k - 1; i++) stringArr[count][i] = buffer[i];
-            stringArr[count][i] = 0;
 
-            ++count;
-            k = 0;
+        charbuffer = fgetc(file);   // get a single character from file
+        buffer[k] = charbuffer;     // put it into the buffer
+        ++k;                        // k points to the next available position in the buffer
+                                    // also counts the number of characters read since the last line
 
-            if (charbuffer == EOF) break;
+        if (charbuffer == '\n' || charbuffer == EOF)        // if recent character read was newline or end of file then copy the line into 
+        {                                                   // the array
+            stringArr[count] = malloc(k * sizeof(char));    // allocate space for the copied line
+
+            for (i = 0; i < k - 1; i++) stringArr[count][i] = buffer[i]; // copy it into the new space
+            stringArr[count][i] = 0; // null terminate
+
+            ++count;    // update the number of lines read
+            k = 0;      // reset the buffer to "empty"
+
+            if (charbuffer == EOF) break; // if end of file then exit the loop
         }
     }
-    stringArr[count] = 0;
 
     fclose(file);
     free(buffer);
