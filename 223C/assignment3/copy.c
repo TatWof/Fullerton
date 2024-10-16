@@ -5,10 +5,12 @@
  * copies the content of a file to an array of char pointers
  * 
  * params:
- * array for the file to be copied into
- * maximum size of the array
+ * - name of the file being taken in
+ * - array for the file to be copied into
+ * - maximum size of the array
  * 
- * returns: numbers of lines read
+ * returns: 
+ * - numbers of lines read
 */
 int copy(char* filename, char** stringArr, int maxsize)
 {
@@ -30,8 +32,7 @@ int copy(char* filename, char** stringArr, int maxsize)
     k = 0;
     while (1)
     {
-        if(count > maxsize) break; /* if ran out of space in the string then array exit the loop*/
-
+        if(count > maxsize) break; /* if ran out of space in the string array then exit the loop*/
 
         charbuffer = fgetc(file);   // get a single character from file
         buffer[k] = charbuffer;     // put it into the buffer
