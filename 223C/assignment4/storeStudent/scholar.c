@@ -28,5 +28,9 @@ int main(int argc, char const *argv[])
     showData(data, datacount);
 
     storeData(ofname, data, datacount);
+
+    for (size_t i = 0; i < datacount; i++)
+        destructStudent(data[i]);
+    
     return 0;
 }

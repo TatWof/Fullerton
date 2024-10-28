@@ -11,8 +11,10 @@ struct Student
     int CWID;
     char* major;
     enum Class class_standing;
-    float parking_cost;
+    double parking_cost;
     int ZIPcode;
 };
+
+extern void destructStudent(struct Student*);
 
 #endif

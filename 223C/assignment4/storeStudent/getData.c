@@ -11,6 +11,9 @@ int getData(char* ifname, struct Student** data, int maxsize)
     char buffer[2048];
     int cbuf;
 
+    if (file == NULL) return 0;
+    
+
     count = 0;
     k = 0;
     while(1)
