@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
     datacount = getBinData(ifname, data, 2048);
     showData(data, datacount);
 
-    //putData(ofname, data, datacount);
+    putData(ofname, data, datacount);
 
     return 0;
 }
