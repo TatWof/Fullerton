@@ -15,19 +15,18 @@
 
 extern int getData(char*, struct Student**, int);
 extern int storeData(char*,struct Student**, int);
+extern int showData(struct Student**, int);
 
 int main(int argc, char const *argv[])
 {
-    char* ifname;
-    char* ofname;
+    char* ifname = "data.txt";
+    char* ofname = "data.bin";
     struct Student* data[2048];
+    int datacount;
 
-    if (getData(ifname, data, 2048) == 1)
-    {
-        printf("Something went wrong while getting data.\n");
-        return 0;
-    }
+    datacount = getData(ifname, data, 2048);
+    showData(data, datacount);
 
-    storeData(ofname, data, 2048);
+    storeData(ofname, data, datacount);
     return 0;
 }
