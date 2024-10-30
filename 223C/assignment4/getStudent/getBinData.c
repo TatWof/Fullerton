@@ -2,6 +2,18 @@
 #include <stdio.h>
 #include "student.h"
 
+/* Get Binary Data
+ * gets data from a binary file and puts it into a student object
+ * 
+ * params: 
+ * - filename
+ * - records
+ * - number of records
+ * 
+ * requires:
+ * - student object
+ * - class standing enum
+*/
 int getBinData(char* filename, struct Student** data, int maxsize)
 {
     FILE* file = fopen(filename, "rb");

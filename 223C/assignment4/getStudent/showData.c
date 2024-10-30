@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include "student.h"
 
+/* Show Data
+ * prints out each student record
+ *
+ * params:
+ * - data
+ * - number of records
+ * 
+ * requires:
+ * Student object
+ * class standing enum
+*/
 int showData(struct Student** data, int count)
 {
     for (int i = 0; i < count; i++)

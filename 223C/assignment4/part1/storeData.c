@@ -3,15 +3,34 @@
 
 #include "student.h"
 
+/* Store Data
+ * stores data into a binary file
+ * 
+ * params: 
+ * - filename
+ * - records
+ * - number of records
+ * 
+ * requires:
+ * - student object
+ * - class standing enum
+*/
 int storeData(char* filename, struct Student** data, int count)
 {
     FILE* file = fopen(filename, "wb");
     int i, j;
 
+    if (file == NULL) return 1;
+    if (data == NULL) return 1;
+
     fwrite(&count, sizeof(int), 1, file);
 
     for (i = 0; i < count; i++)
     {
+        /* structure for each record
+        [4b, int][~b, char][4b, int][4b, int][1b, int][8b, float][4b, int]
+        */
+
         // writes a string (name) 
         for (j = 0; data[i]->name[j] != 0;){++j;}
         fwrite(&j, sizeof(int), 1, file);   // writes in how long the string is
@@ -45,7 +64,7 @@ int storeData(char* filename, struct Student** data, int count)
             break;
         }
 
-        // writes a float (Parking cost)
+        // writes a double (Parking cost)
         fwrite(&(data[i]->parking_cost), sizeof(double), 1, file);
 
         // writes an int (zipcode)

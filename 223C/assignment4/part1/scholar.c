@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "student.h"
 
@@ -19,10 +20,24 @@ extern int showData(struct Student**, int);
 
 int main(int argc, char const *argv[])
 {
-    char* ifname = "data.txt";
-    char* ofname = "data.bin";
+    char* ifname = malloc(2048 * sizeof(char));
+    char* ofname = malloc(2048 * sizeof(char));
     struct Student* data[2048];
     int datacount;
+    int cbuf;
+    int i;
+
+    // get the name of the data file
+    printf("enter the name of data file to be read:");
+    scanf("%s", ifname);
+    scanf("%c", cbuf);
+
+    // generating the name of the output file
+    for (i = 0; ifname[i] != '.'; ++i)
+        ofname[i] = ifname[i];
+    ofname[i] = 0;
+    ofname = strcat(ofname, ".bin");
+
 
     datacount = getData(ifname, data, 2048);
     showData(data, datacount);

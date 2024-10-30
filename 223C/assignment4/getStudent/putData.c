@@ -2,6 +2,19 @@
 #include <stdio.h>
 #include "student.h"
 
+
+/* Put Data
+ * Puts data into a text file
+ * 
+ * params: 
+ * - filename
+ * - records
+ * - number of records
+ * 
+ * requires:
+ * - student object
+ * - class standing enum
+*/
 int putData(char* filename,struct Student** data, int count)
 {
     FILE* file = fopen(filename, "w");

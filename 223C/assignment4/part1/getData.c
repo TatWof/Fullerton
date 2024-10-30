@@ -3,6 +3,22 @@
 
 #include "student.h"
 
+
+/* Get Data
+ * gets data from a text file
+ *
+ * params:
+ * - input file name
+ * - data array
+ * - max array size
+ * 
+ * requires:
+ * - Student object
+ * - class standing enum
+ * 
+ * returns:
+ * - number of the data records found
+*/
 int getData(char* ifname, struct Student** data, int maxsize)
 {
     FILE* file = fopen(ifname, "r");
@@ -12,20 +28,22 @@ int getData(char* ifname, struct Student** data, int maxsize)
     int cbuf;
 
     if (file == NULL) return 0;
-    
 
     count = 0;
     k = 0;
     while(1)
     {
-        if(count > maxsize) break;
+        if(count > maxsize) break; // out of data space
+        
+        // grabs char
         cbuf = fgetc(file);
         buffer[k] = cbuf;
         ++k;
 
+        // end of line read
         if (cbuf == '\n' || cbuf == EOF)
         {
-            ++l;
+            ++l; // l controls which line of a record has been read
             switch (l)
             {
             case 1: // name
@@ -53,7 +71,7 @@ int getData(char* ifname, struct Student** data, int maxsize)
                 break;
 
             case 4: // class standing
-                switch (cbuf)
+                switch (cbuf - '0') // enums are stored by numerical representations
                 {
                 case 0:
                     data[count]->class_standing = Freshman;
@@ -68,6 +86,7 @@ int getData(char* ifname, struct Student** data, int maxsize)
                     data[count]->class_standing = Senior;
                     break;
                 default:
+                    data[count]->class_standing = Freshman;
                     break;
                 }
                 k = 0;
@@ -84,13 +103,13 @@ int getData(char* ifname, struct Student** data, int maxsize)
                 data[count]->ZIPcode = atoi(buffer);
                 k = 0;
                 
-            default:
+            default: // end of record set to new record
                 l = 0;
                 ++count;
                 break;
             }
 
-            if (cbuf == EOF) break;
+            if (cbuf == EOF) break; // end of file
         }
     }
 
