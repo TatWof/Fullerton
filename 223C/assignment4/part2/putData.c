@@ -23,15 +23,19 @@ int putData(char* filename,struct Student** data, int count)
 
     for (i = 0; i < count; i++)
     {
+        // name
         fputs(data[i]->name, file);
         fputs("\n", file);
 
+        // CWID
         sprintf(buffer, "%d\n", data[i]->CWID);
         fputs(buffer, file);
 
+        // major
         fputs(data[i]->major, file);
         fputs("\n", file);
 
+        // class standing
         switch (data[i]->class_standing)
         {
         case Freshman:
@@ -52,9 +56,11 @@ int putData(char* filename,struct Student** data, int count)
             break;
         }
 
+        // parking cost
         sprintf(buffer, "%5.2lf\n", data[i]->parking_cost);
         fputs(buffer, file);
 
+        // zip code
         sprintf(buffer, "%d\n", data[i]->ZIPcode);
         fputs(buffer, file);
     }

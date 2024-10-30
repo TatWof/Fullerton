@@ -14,7 +14,11 @@
 */
 int showData(struct Student** data, int count)
 {
-    if (data == NULL) return 1;
+    if (data[0] == NULL)
+    {
+        printf("No data was found.\n");
+        return 1;
+    }
     
     for (int i = 0; i < count; i++)
     {
@@ -45,5 +49,5 @@ int showData(struct Student** data, int count)
         printf("parking cost = %5.2lf\n", data[i]->parking_cost);
         printf("zip code = %d\n", data[i]->ZIPcode);
     }
-    
+    return 0;
 }

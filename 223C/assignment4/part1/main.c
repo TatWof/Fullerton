@@ -28,9 +28,8 @@ int main(int argc, char const *argv[])
     int i;
 
     // get the name of the data file
-    printf("enter the name of data file to be read:");
+    printf("Enter the name of data file to be read: ");
     scanf("%s", ifname);
-    scanf("%c", cbuf);
 
     // generating the name of the output file
     for (i = 0; ifname[i] != '.'; ++i)
@@ -38,14 +37,23 @@ int main(int argc, char const *argv[])
     ofname[i] = 0;
     ofname = strcat(ofname, ".bin");
 
-
+    // get the data from the file
     datacount = getData(ifname, data, 2048);
-    showData(data, datacount);
+    if(datacount == 0)
+    {
+        printf("No data was read from the file.\n");
+        return 0;
+    }
 
+    printf("%d records was read.\nHere are the records:\n", datacount);
+    if(showData(data, datacount)) return 0;
+    printf("\n");
+
+    // store data in binary file
+    printf("Storing data in file: %s", ofname);
     storeData(ofname, data, datacount);
 
     for (size_t i = 0; i < datacount; i++)
         destructStudent(data[i]);
-    
     return 0;
 }

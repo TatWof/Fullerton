@@ -27,7 +27,16 @@ int getData(char* ifname, struct Student** data, int maxsize)
     char buffer[2048];
     int cbuf;
 
-    if (file == NULL) return 0;
+    if (file == NULL) 
+    {
+        printf("Error in opening file. File does not exist.\n");
+        return 0;
+    }
+    if(data == NULL)
+    {
+        printf("Error with data memory location.");
+        return 0;
+    }
 
     count = 0;
     k = 0;
@@ -113,5 +122,6 @@ int getData(char* ifname, struct Student** data, int maxsize)
         }
     }
 
+    fclose(file);
     return count;
 }

@@ -20,8 +20,12 @@ int storeData(char* filename, struct Student** data, int count)
     FILE* file = fopen(filename, "wb");
     int i, j;
 
-    if (file == NULL) return 1;
-    if (data == NULL) return 1;
+    if (file == NULL) 
+    {
+        printf("Error with creating file.\n");
+        return 1;
+    }
+    if (data[0] == NULL) return 1;
 
     fwrite(&count, sizeof(int), 1, file);
 
@@ -70,5 +74,5 @@ int storeData(char* filename, struct Student** data, int count)
         // writes an int (zipcode)
         fwrite(&(data[i]->ZIPcode), sizeof(int), 1, file);
     }
-    
+    fclose(file);
 }
