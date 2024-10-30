@@ -9,6 +9,7 @@
 */
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "student.h"
 
@@ -18,17 +19,17 @@ extern int showData(struct Student**, int);
 
 int main(int argc, char const *argv[])
 {
-    char* ifname = "data.bin";
-    char* ofname = "students.txt";
+    char* ifname = malloc(2048 * sizeof(char));
+    char* ofname = malloc(2048 * sizeof(char));
     struct Student* data[2048];
     int datacount;
-    int cbuf;
     int i;
 
+    printf("Welcome to Scholarize.\nThis program is for getting data from a Binary file and putting into a Text file\n");
+
     // get the name of the data file
-    printf("Enter the name of data file to be read:");
+    printf("Enter the name of data file to be read: ");
     scanf("%s", ifname);
-    scanf("%c", cbuf);
 
     // generating the name of the output file
     for (i = 0; ifname[i] != '.'; ++i)
@@ -50,8 +51,11 @@ int main(int argc, char const *argv[])
     printf("\n");
 
     // store data in txt file
-    printf("Storing data in file: %s", ofname);
+    printf("Storing data in file: %s\n\n", ofname);
     putData(ofname, data, datacount);
 
+    printf("Thank you for using this program\nGoodbye\n");
+    for (size_t i = 0; i < datacount; i++)
+        destructStudent(data[i]);
     return 0;
 }

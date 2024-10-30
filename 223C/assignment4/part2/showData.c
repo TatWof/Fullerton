@@ -14,6 +14,8 @@
 */
 int showData(struct Student** data, int count)
 {
+    if(data[0] == NULL) return 1;
+    
     for (int i = 0; i < count; i++)
     {
         printf("[Student %2d]\n", i + 1);
@@ -43,5 +45,5 @@ int showData(struct Student** data, int count)
         printf("parking cost = %5.2f\n", data[i]->parking_cost);
         printf("zip code = %d\n", data[i]->ZIPcode);
     }
-    
+    return 0;
 }

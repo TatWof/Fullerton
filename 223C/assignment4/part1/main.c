@@ -27,6 +27,8 @@ int main(int argc, char const *argv[])
     int cbuf;
     int i;
 
+    printf("Welcome to Scholarize.\nThis program is for getting data from a text file and putting into a Binary file\n");
+
     // get the name of the data file
     printf("Enter the name of data file to be read: ");
     scanf("%s", ifname);
@@ -50,9 +52,10 @@ int main(int argc, char const *argv[])
     printf("\n");
 
     // store data in binary file
-    printf("Storing data in file: %s", ofname);
+    printf("Storing data in file: %s\n\n", ofname);
     storeData(ofname, data, datacount);
 
+    printf("Thank you for using this program\nGoodbye\n");
     for (size_t i = 0; i < datacount; i++)
         destructStudent(data[i]);
     return 0;

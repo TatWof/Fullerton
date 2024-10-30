@@ -40,6 +40,7 @@ int getData(char* ifname, struct Student** data, int maxsize)
 
     count = 0;
     k = 0;
+    l = 0;
     while(1)
     {
         if(count > maxsize) break; // out of data space
