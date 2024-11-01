@@ -1,7 +1,7 @@
 This is a README markdown text file for the End User with instructions for how to compile and run.
 
 # Program Information
-Name:
+Name: Billy L
 
 Purpose:
 
@@ -22,6 +22,7 @@ The Linux bash will automatically run the program after it finishes compiling. T
 # Known Issues
 
 # Changelog
+## Version 1
 
 # Credits
 
