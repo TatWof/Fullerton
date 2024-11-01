@@ -104,7 +104,7 @@ int getData(char* ifname, struct Student** data, int maxsize)
 
             case 5:
                 buffer[k] = 0;
-                data[count]->phone = atoi(buffer);
+                data[count]->phone = (long long)atoll(buffer);
                 k = 0;
                 break;
             
