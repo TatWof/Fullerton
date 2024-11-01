@@ -42,6 +42,7 @@ int showData(struct Student** data, int count)
             break;
         }
 
+        printf("phone number = %10lld\n", data[i]->phone);
         printf("parking cost = %5.2f\n", data[i]->parking_cost);
         printf("zip code = %d\n", data[i]->ZIPcode);
     }

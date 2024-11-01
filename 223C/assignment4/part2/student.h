@@ -1,7 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#define FIELDS 6
+#define FIELDS 7
 
 enum Class {Freshman, Sophmore, Junior, Senior};
 
@@ -11,7 +11,8 @@ struct Student
     int CWID;
     char* major;
     enum Class class_standing;
-    double parking_cost;
+    long long phone;
+    float parking_cost;
     int ZIPcode;
 };
 

@@ -65,8 +65,11 @@ int getBinData(char* filename, struct Student** data, int maxsize)
             break;
         }
 
+        //phone
+        fread(&data[i]->phone, sizeof(long long), 1, file);
+
         // parking cost
-        fread(&data[i]->parking_cost, sizeof(double), 1, file);
+        fread(&data[i]->parking_cost, sizeof(float), 1, file);
         
         // zipcode
         fread(&data[i]->ZIPcode, sizeof(int), 1, file);

@@ -68,8 +68,11 @@ int storeData(char* filename, struct Student** data, int count)
             break;
         }
 
+        // writes phone
+        fwrite(&(data[i]->phone), sizeof(long long), 1, file);
+
         // writes a double (Parking cost)
-        fwrite(&(data[i]->parking_cost), sizeof(double), 1, file);
+        fwrite(&(data[i]->parking_cost), sizeof(float), 1, file);
 
         // writes an int (zipcode)
         fwrite(&(data[i]->ZIPcode), sizeof(int), 1, file);

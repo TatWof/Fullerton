@@ -81,7 +81,7 @@ int getData(char* ifname, struct Student** data, int maxsize)
                 break;
 
             case 4: // class standing
-                switch (cbuf - '0') // enums are stored by numerical representations
+                switch (buffer[0] - '0') // enums are stored by numerical representations
                 {
                 case 0:
                     data[count]->class_standing = Freshman;
@@ -102,13 +102,19 @@ int getData(char* ifname, struct Student** data, int maxsize)
                 k = 0;
                 break;
 
-            case 5: // parking cost
+            case 5:
+                buffer[k] = 0;
+                data[count]->phone = atoi(buffer);
+                k = 0;
+                break;
+            
+            case 6: // parking cost
                 buffer[k] = 0;
                 data[count]->parking_cost = atof(buffer);
                 k = 0;
                 break;
 
-            case 6: //zipcode
+            case 7: //zipcode
                 buffer[k] = 0;
                 data[count]->ZIPcode = atoi(buffer);
                 k = 0;
