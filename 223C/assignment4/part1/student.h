@@ -8,12 +8,12 @@ enum Class {Freshman, Sophmore, Junior, Senior};
 struct Student
 {
     char* name;
-    int CWID;
+    unsigned int CWID;
     char* major;
-    enum Class class_standing;
-    long long phone;
+    enum Class standing;
+    unsigned long long phone;
     float parking_cost;
-    int ZIPcode;
+    unsigned int ZIPcode;
 };
 
 extern void destructStudent(struct Student*);

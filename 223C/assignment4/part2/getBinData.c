@@ -48,20 +48,20 @@ int getBinData(char* filename, struct Student** data, int maxsize)
         switch (j)
         {
         case 0:
-            data[i]->class_standing = Freshman;
+            data[i]->standing = Freshman;
             break;
         case 1:
-            data[i]->class_standing = Sophmore;
+            data[i]->standing = Sophmore;
             break;
         case 2:
-            data[i]->class_standing = Junior;
+            data[i]->standing = Junior;
             break;
         case 3:
-            data[i]->class_standing = Senior;
+            data[i]->standing = Senior;
             break;
         
         default:
-            data[i]->class_standing = Freshman;
+            data[i]->standing = Freshman;
             break;
         }
 

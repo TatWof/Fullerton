@@ -36,7 +36,7 @@ int putData(char* filename,struct Student** data, int count)
         fputs("\n", file);
 
         // class standing
-        switch (data[i]->class_standing)
+        switch (data[i]->standing)
         {
         case Freshman:
             fputs("0\n", file);

@@ -84,19 +84,19 @@ int getData(char* ifname, struct Student** data, int maxsize)
                 switch (buffer[0] - '0') // enums are stored by numerical representations
                 {
                 case 0:
-                    data[count]->class_standing = Freshman;
+                    data[count]->standing = Freshman;
                     break;
                 case 1:
-                    data[count]->class_standing = Sophmore;
+                    data[count]->standing = Sophmore;
                     break;
                 case 2:
-                    data[count]->class_standing = Junior;
+                    data[count]->standing = Junior;
                     break;
                 case 3:
-                    data[count]->class_standing = Senior;
+                    data[count]->standing = Senior;
                     break;
                 default:
-                    data[count]->class_standing = Freshman;
+                    data[count]->standing = Freshman;
                     break;
                 }
                 k = 0;

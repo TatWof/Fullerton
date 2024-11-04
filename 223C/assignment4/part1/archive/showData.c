@@ -27,7 +27,7 @@ int showData(struct Student** data, int count)
         printf("CWID = %d\n", data[i]->CWID);
         printf("major = %s\n", data[i]->major);
 
-        switch (data[i]->class_standing)
+        switch (data[i]->standing)
         {
         case Freshman:
             printf("class standing = Freshman\n");

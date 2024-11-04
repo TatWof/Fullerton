@@ -49,7 +49,7 @@ int storeData(char* filename, struct Student** data, int count)
         fputs(data[i]->major, file);        // the string itself
 
         // writes 1 byte for enum
-        switch (data[i]->class_standing)
+        switch (data[i]->standing)
         {
         case Freshman:
             fputc(0, file);
