@@ -14,11 +14,11 @@
  * returns:
  * - record position (-1 if not found)
 */
-int search(FILE* file, unsigned int match)
+long long search(FILE* file, unsigned int match)
 {
     fpos_t save;
     fpos_t record;
-    int i;
+    long long i;
     unsigned int temp; 
 
     fgetpos(file, save);

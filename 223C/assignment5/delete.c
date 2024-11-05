@@ -3,4 +3,4 @@
 
 #include "student.h"
 
-extern int search(FILE*, unsigned int);
+extern long long search(FILE*, unsigned int);

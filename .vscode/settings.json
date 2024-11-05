@@ -4,6 +4,8 @@
         "string.h": "c",
         "string": "c",
         "stdlib.h": "c",
-        "student.h": "c"
+        "student.h": "c",
+        "array": "c",
+        "string_view": "c"
     }
 }
