@@ -3,4 +3,4 @@
 
 #include "student.h"
 
-extern struct Student* get(FILE*, long);
+extern struct Student* get(FILE*, long long);

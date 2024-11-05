@@ -3,7 +3,7 @@
 #include "student.h"
 
 
-struct Student* get(FILE* file, long position)
+struct Student* get(FILE* file, long long position)
 {
     fpos_t save;
     struct Student* stu = malloc(1 * sizeof(struct Student));

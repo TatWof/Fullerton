@@ -16,6 +16,4 @@ struct Student
     unsigned int ZIPcode;
 };
 
-extern void destructStudent(struct Student*);
-
 #endif
