@@ -14,10 +14,10 @@
  * returns:
  * - record position (-1 if not found)
 */
-long long search(FILE* file, unsigned int match)
+fpos_t* search(FILE* file, unsigned int match)
 {
-    fpos_t save;
-    fpos_t record;
+    fpos_t* save;
+    fpos_t* record;
     long long i;
     unsigned int temp; 
 
@@ -34,7 +34,7 @@ long long search(FILE* file, unsigned int match)
         if (temp == match)
         {
             fsetpos(file, save);
-            return i;
+            return record;
         }
         fsetpos(file, record);
         

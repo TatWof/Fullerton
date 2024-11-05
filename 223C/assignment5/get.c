@@ -3,15 +3,15 @@
 #include "student.h"
 
 
-struct Student* get(FILE* file, long long pos)
+struct Student* get(FILE* file, fpos_t* pos)
 {
-    fpos_t save;
+    fpos_t* save;
     struct Student* stu = malloc(1 * sizeof(struct Student));
     int temp;
 
     fgetpos(file, save);
 
-    fsetpos(file, pos * 128);
+    fsetpos(file, pos);
 
     fread(&stu->name, sizeof(char), 30, file);
     fread(&stu->CWID, sizeof(int), 1, file);

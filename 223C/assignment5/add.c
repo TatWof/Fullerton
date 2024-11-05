@@ -4,12 +4,12 @@
 #include "student.h"
 
 extern int store(FILE*, struct Student*);
-extern long long search(FILE*, unsigned int);
+extern fpos_t* search(FILE*, unsigned int);
 
 int add(FILE* file)
 {
-    fpos_t save;
-    int pos;
+    fpos_t* save;
+    fpos_t* pos;
     struct Student s;
     char buffer;
     char str[2048];
@@ -64,7 +64,7 @@ int add(FILE* file)
         scanf("%d", s.ZIPcode);
 
         pos = search(file, 0);    
-        (pos < 0) ? fseek(file, 0, SEEK_END) : fsetpos(file, pos * 128);
+        (pos < 0) ? fseek(file, 0, SEEK_END) : fsetpos(file, pos);
         store(file, &s);
         
         printf("do you wish to continue?\nEnter \'C\' to continue (anything else will exit)\nEnter:");
