@@ -18,7 +18,7 @@ fpos_t* search(FILE* file, unsigned int match)
 {
     fpos_t* save;
     fpos_t* record;
-    long long i;
+    int i;
     unsigned int temp; 
 
     fgetpos(file, save);
@@ -42,5 +42,5 @@ fpos_t* search(FILE* file, unsigned int match)
     }
     
     fsetpos(file, save);
-    return -1;
+    return 0;
 }

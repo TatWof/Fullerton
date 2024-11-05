@@ -13,10 +13,12 @@
 
 int main(int argc, char const *argv[])
 {
-    char filename = "academic.bin";
+    char* filename = "academic.bin";
     FILE* file = fopen(filename, "rwb");
 
     
 
+    
+    fclose(file);
     return 0;
 }

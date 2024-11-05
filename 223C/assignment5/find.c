@@ -3,7 +3,7 @@
 
 #include "student.h"
 
-extern struct Student* get(FILE*, long long);
+extern struct Student* get(FILE*, fpos_t*);
 extern fpos_t* search(FILE*, unsigned int);
 extern int showData(struct Student**, int);
 
@@ -16,7 +16,7 @@ int find(FILE* file, unsigned int match)
     fgetpos(file, save);
     pos = search(file, match);
 
-    if (pos < 0) 
+    if (pos == 0) 
     {
         printf("Record can not be found.\n");
         fsetpos(file, save);
