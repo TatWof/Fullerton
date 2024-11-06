@@ -4,17 +4,17 @@
 #include "student.h"
 
 extern int store(FILE*, struct Student*);
-extern fpos_t* search(FILE*, unsigned int);
+extern int search(FILE*, unsigned int, fpos_t*);
 
 int add(FILE* file)
 {
-    fpos_t* save;
-    fpos_t* pos;
+    fpos_t save;
+    fpos_t pos;
     struct Student s;
     char buffer;
     char str[2048];
 
-    fgetpos(file, save);
+    fgetpos(file, &save);
 
     while(1)
     {
@@ -30,7 +30,7 @@ int add(FILE* file)
         scanf("%s", s.major);
         scanf("%c", &buffer);
 
-        printf("enter class standing");
+        printf("enter class standing: ");
         scanf("%s", str);
         scanf("%c", &buffer);
 
@@ -52,7 +52,6 @@ int add(FILE* file)
             s.standing = Freshman;
             break;
         }
-        break;
 
         printf("enter phone number: ");
         scanf("%lld", &s.phone);
@@ -63,8 +62,7 @@ int add(FILE* file)
         printf("enter ZIP code: ");
         scanf("%d", &s.ZIPcode);
 
-        pos = search(file, 0);    
-        (pos == 0) ? fseek(file, 0, SEEK_END) : fsetpos(file, pos);
+        (search(file, 0, &pos) == 0) ? fseek(file, 0, SEEK_END) : fsetpos(file, &pos);
         store(file, &s);
         
         printf("do you wish to continue?\nEnter \'C\' to continue (anything else will exit)\nEnter:");
@@ -73,6 +71,6 @@ int add(FILE* file)
         if(!(buffer == 'C' || buffer == 'c')) break;
     }
 
-    fsetpos(file, save);
+    fsetpos(file, &save);
     return 0;
 }

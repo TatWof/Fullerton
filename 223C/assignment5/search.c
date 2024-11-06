@@ -14,33 +14,35 @@
  * returns:
  * - record position (-1 if not found)
 */
-fpos_t* search(FILE* file, unsigned int match)
+int search(FILE* file, unsigned int match, fpos_t* posP)
 {
-    fpos_t* save;
-    fpos_t* record;
+    fpos_t save;
+    fpos_t record;
     int i;
-    unsigned int temp; 
+    int temp; 
+    int buffer;
 
-    fgetpos(file, save);
-
+    fgetpos(file, &save);
     fseek(file, 0, SEEK_SET);
-    for (i = 0; fgetc(file) != EOF; i++)
+    buffer = fgetc(file);
+    for (i = 0; buffer != EOF; i++)
     {
         fseek(file, -1, SEEK_CUR);
         
-        fgetpos(file, record);
+        fgetpos(file, &record);
         fseek(file, 30, SEEK_CUR);
         temp = fread(&temp, sizeof(int), 1, file);
         if (temp == match)
         {
-            fsetpos(file, save);
-            return record;
+            *posP = record;
+            fsetpos(file, &save);
+            return 0;
         }
-        fsetpos(file, record);
+        fsetpos(file, &record);
         
         fseek(file, 128, SEEK_CUR);
     }
     
-    fsetpos(file, save);
-    return 0;
+    fsetpos(file, &save);
+    return 1;
 }

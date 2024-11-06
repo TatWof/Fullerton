@@ -6,6 +6,7 @@
         "stdlib.h": "c",
         "student.h": "c",
         "array": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "algorithm": "c"
     }
 }

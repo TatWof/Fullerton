@@ -28,7 +28,7 @@ int store(FILE* file, struct Student* data)
     */
 
     // writes a string (name) 
-    for(j = 0; data->major[j] != 0 || j < 30; ++j)
+    for(j = 0; data->name[j] != 0 && j < 30; ++j)
         fwrite(&(data->name[j]), sizeof(char), 1, file);
     for(i = 0; i < 30 - j; ++i) fputc(0, file);
     
@@ -36,7 +36,7 @@ int store(FILE* file, struct Student* data)
     fwrite(&(data->CWID), sizeof(int), 1, file);
     
     // writes a string (major)
-    for(j = 0; data->major[j] != 0 || j < 74; ++j)
+    for(j = 0; data->major[j] != 0 && j < 74; ++j)
         fwrite(&(data->major[j]), sizeof(char), 1, file);
     for(i = 0; i < 74 - j; ++i) fputc(0, file);
 
