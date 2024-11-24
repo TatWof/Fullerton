@@ -13,8 +13,6 @@ int find(FILE* file, unsigned int match)
     fpos_t pos;
     struct Student* s;
 
-    //fgetpos(file, &save);
-
     if(search(file, match, &pos))
     {
         printf("Record can not be found.\n");
@@ -25,6 +23,6 @@ int find(FILE* file, unsigned int match)
     s = get(file, &pos);
     showData(&s, 1);
 
-    //fsetpos(file, &save);
+    free(s);
     return 0;
 }
