@@ -18,6 +18,7 @@ int showData(struct Student** data, int count)
     
     for (int i = 0; i < count; i++)
     {
+        
         printf("[Student %2d]\n", i + 1);
         printf("name = %s\n", data[i]->name);
         printf("CWID = %d\n", data[i]->CWID);

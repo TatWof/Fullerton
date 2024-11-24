@@ -4,18 +4,18 @@
 #include "student.h"
 
 
-struct Student* get(FILE* file, fpos_t pos)
+struct Student* get(FILE* file, fpos_t* pos)
 {
     fpos_t save;
     struct Student* stu = malloc(1 * sizeof(struct Student));
     int temp;
 
-    fgetpos(file, &save);
+    //fgetpos(file, &save);
 
-    fsetpos(file, &pos);
+    fsetpos(file, pos);
 
-    fread(&stu->name, sizeof(char), 30, file);
     fread(&stu->CWID, sizeof(int), 1, file);
+    fread(&stu->name, sizeof(char), 30, file);
     fread(&stu->major, sizeof(char), 74, file);
     
     fread(&temp, sizeof(int), 1, file);
@@ -43,6 +43,6 @@ struct Student* get(FILE* file, fpos_t pos)
     fread(&stu->parking_cost, sizeof(float), 1, file);
     fread(&stu->ZIPcode, sizeof(int), 1, file);
 
-    fsetpos(file, &save);
+    //fsetpos(file, &save);
     return stu;
 }

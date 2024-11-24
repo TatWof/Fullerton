@@ -14,11 +14,9 @@ int add(FILE* file)
     char buffer;
     char str[2048];
 
-    fgetpos(file, &save);
-
+    fgetpos(file, &pos);
     while(1)
     {
-        
         printf("enter name: ");
         scanf("%s", s.name);
         scanf("%c", &buffer);
@@ -62,15 +60,18 @@ int add(FILE* file)
         printf("enter ZIP code: ");
         scanf("%d", &s.ZIPcode);
 
-        (search(file, 0, &pos) == 0) ? fseek(file, 0, SEEK_END) : fsetpos(file, &pos);
+        if (search(file, 0, &pos) != 0)
+        {
+            fseek(file, 0, SEEK_END);
+            fgetpos(file, &pos);
+        }
         store(file, &s);
         
-        printf("do you wish to continue?\nEnter \'C\' to continue (anything else will exit)\nEnter:");
+        scanf("%c", &buffer);
+        printf("\nDo you wish to continue?\nEnter [c] to continue (anything else will exit)\nEnter: ");
         scanf("%c", &buffer);
 
-        if(!(buffer == 'C' || buffer == 'c')) break;
+        if(!(buffer == 'c')) break;
     }
-
-    fsetpos(file, &save);
     return 0;
 }

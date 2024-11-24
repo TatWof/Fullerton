@@ -19,43 +19,60 @@ extern int show(FILE* file);
 int main(int argc, char const *argv[])
 {
     char* filename = "academic.bin";
-    FILE* file = fopen(filename,"w+");
+    FILE* file = fopen(filename,"r+");
     char cbuf;
     int findkey;
 
-    do{
-        printf("Enter [a] to add, [d] to delete, [f] to find, and [s] to show all records.\nEnter: ");
-        scanf("%c", &cbuf);
+    if(file == NULL) file = fopen(filename, "w+");
 
-        if(cbuf == 'x') break;
+    printf("Welcome to Student Record Manager.\nAll data will be stored in \'academic.bin\'.\n\n");
+
+
+    printf("Enter [a] to add, [d] to delete, [f] to find, and [s] to show all records.\nEnter: ");
+    scanf("%c", &cbuf);
+
+    while(1)
+    {
+
+        if(cbuf == 'x' || cbuf == 'X' || cbuf == 'q' || cbuf == 'Q') break;
         
         switch (cbuf)
         {
-        case 'a':
+        case 'A':
+        case 'a': 
             add(file);
+            scanf("%c", &cbuf);
             break;
+        case 'D':
         case 'd':
             printf("Please enter the CWID of the record you want to delete.\nEnter: ");
             scanf("%d", &findkey);
             delete(file, findkey);
+            scanf("%c", &cbuf);
             break;
+        case 'F':
         case 'f':
             printf("Please enter the CWID of the record you want to find.\nEnter: ");
             scanf("%d", &findkey);
             find(file, findkey);
+            scanf("%c", &cbuf);
             break;
+        case 'S':
         case 's':
             show(file);
+            scanf("%c", &cbuf);
             break;
         default:
             printf("Sorry. That is not a valid command. Please try again.\n");
             break;
         }
 
-    } while(1);
+        
+        printf("Enter [a] to add, [d] to delete, [f] to find, and [s] to show all records.\nEnter [x] to exit\nEnter: ");
+        scanf("%c", &cbuf);
+    }
     
-
-    
+    printf("Thank You for using Student Record Manager.\nGoodbye.");
     fclose(file);
     return 0;
 }
