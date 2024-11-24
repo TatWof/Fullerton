@@ -6,6 +6,13 @@
 extern int store(FILE*, struct Student*);
 extern int search(FILE*, unsigned int, fpos_t*);
 
+/* Add
+ * command for adding new records on file.
+ * will overwrite empty records first.
+ *
+ * params: 
+ * file pointer
+*/
 int add(FILE* file)
 {
     fpos_t save;
@@ -60,7 +67,7 @@ int add(FILE* file)
         printf("enter ZIP code: ");
         scanf("%d", &s.ZIPcode);
 
-        if (search(file, 0, &pos) != 0)
+        if (search(file, 0, &pos))
         {
             fseek(file, 0, SEEK_END);
             fgetpos(file, &pos);

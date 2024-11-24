@@ -3,14 +3,21 @@
 
 #include "student.h"
 
-
+/* Get
+ * gets a record from a specified file position
+ *
+ * params: 
+ * - file pointer
+ * - file position pointer
+ * 
+ * returns:
+ * - Student struct
+*/
 struct Student* get(FILE* file, fpos_t* pos)
 {
     fpos_t save;
     struct Student* stu = malloc(1 * sizeof(struct Student));
     int temp;
-
-    //fgetpos(file, &save);
 
     fsetpos(file, pos);
 
@@ -42,7 +49,5 @@ struct Student* get(FILE* file, fpos_t* pos)
     fread(&stu->phone, sizeof(long long), 1, file);
     fread(&stu->parking_cost, sizeof(float), 1, file);
     fread(&stu->ZIPcode, sizeof(int), 1, file);
-
-    //fsetpos(file, &save);
     return stu;
 }

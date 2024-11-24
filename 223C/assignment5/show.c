@@ -6,6 +6,12 @@
 extern struct Student* get(FILE*, fpos_t*);
 extern int showData(struct Student**, int);
 
+/* Show
+ * command for showing all records on file.
+ *
+ * params: 
+ * file pointer
+*/
 int show(FILE* file)
 {
     fpos_t record;

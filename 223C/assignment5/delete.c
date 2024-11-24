@@ -5,6 +5,13 @@
 
 extern int search(FILE*, unsigned int, fpos_t*);
 
+/* Delete
+ * command for deleting a record on file.
+ *
+ * params: 
+ * file pointer
+ * CWID to match
+*/
 int delete(FILE* file, unsigned int match)
 {
     fpos_t pos;

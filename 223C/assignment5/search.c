@@ -10,9 +10,7 @@
  * params:
  * - file pointer
  * - CWID to match
- * 
- * returns:
- * - record position (-1 if not found)
+ * - file position pointer (used to return position on a successful search)
 */
 int search(FILE* file, unsigned int match, fpos_t* posP)
 {
@@ -42,5 +40,5 @@ int search(FILE* file, unsigned int match, fpos_t* posP)
         buffer = fgetc(file);
     }
     
-    return -1;
+    return 1;
 }

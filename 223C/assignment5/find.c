@@ -7,6 +7,13 @@ extern struct Student* get(FILE*, fpos_t*);
 extern int search(FILE*, unsigned int, fpos_t*);
 extern int showData(struct Student**, int);
 
+/* Find
+ * command for finding a specific record. only compares CWID.
+ *
+ * params: 
+ * file pointer
+ * CWID to find
+*/
 int find(FILE* file, unsigned int match)
 {
     fpos_t save;
