@@ -68,11 +68,11 @@ int main(int argc, char const *argv[])
         }
 
         
-        printf("Enter [a] to add, [d] to delete, [f] to find, and [s] to show all records.\nEnter [x] to exit\nEnter: ");
+        printf("\nEnter [a] to add, [d] to delete, [f] to find, and [s] to show all records.\nEnter [x] to exit\nEnter: ");
         scanf("%c", &cbuf);
     }
     
-    printf("Thank You for using Student Record Manager.\nGoodbye.");
+    printf("Thank You for using Student Record Manager.\nGoodbye.\n");
     fclose(file);
     return 0;
 }
