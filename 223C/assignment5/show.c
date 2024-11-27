@@ -19,7 +19,7 @@ int show(FILE* file)
     int i;
     int buffer;
 
-    printf("[Begining of Records]\n");
+    printf("[Beginning of Records]\n");
 
     fseek(file, 0, SEEK_SET);
     for (i = 0; fgetc(file) != EOF;)

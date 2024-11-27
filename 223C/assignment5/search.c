@@ -11,10 +11,13 @@
  * - file pointer
  * - CWID to match
  * - file position pointer (used to return position on a successful search)
+ * 
+ * returns:
+ * - 0 on success
+ * - 1 on fail
 */
-int search(FILE* file, unsigned int match, fpos_t* posP)
+int search(FILE* file, unsigned int match, fpos_t* fposP)
 {
-
     fpos_t record;
     int i;
     int temp; 
@@ -31,7 +34,7 @@ int search(FILE* file, unsigned int match, fpos_t* posP)
         fread(&temp, sizeof(int), 1, file);
         if (temp == match)
         {
-            *posP = record;
+            *fposP = record;
             return 0;
         }
         fsetpos(file, &record);

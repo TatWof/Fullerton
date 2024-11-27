@@ -21,7 +21,7 @@ int showData(struct Student** data, int count)
         
         printf("[Student %2d]\n", i + 1);
         printf("name = %s\n", data[i]->name);
-        printf("CWID = %d\n", data[i]->CWID);
+        printf("CWID = %u\n", data[i]->CWID);
         printf("major = %s\n", data[i]->major);
 
         switch (data[i]->standing)
@@ -29,7 +29,6 @@ int showData(struct Student** data, int count)
         case Freshman:
             printf("class standing = Freshman\n");
             break;
-
         case Sophmore:
             printf("class standing = Sophmore\n");
             break;
@@ -45,7 +44,7 @@ int showData(struct Student** data, int count)
 
         printf("phone number = %10lld\n", data[i]->phone);
         printf("parking cost = %5.2f\n", data[i]->parking_cost);
-        printf("zip code = %d\n", data[i]->ZIPcode);
+        printf("zip code = %u\n", data[i]->ZIPcode);
     }
     return 0;
 }

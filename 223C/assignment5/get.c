@@ -15,7 +15,6 @@
 */
 struct Student* get(FILE* file, fpos_t* pos)
 {
-    fpos_t save;
     struct Student* stu = malloc(1 * sizeof(struct Student));
     int temp;
 

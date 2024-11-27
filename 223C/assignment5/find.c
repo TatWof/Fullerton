@@ -16,14 +16,12 @@ extern int showData(struct Student**, int);
 */
 int find(FILE* file, unsigned int match)
 {
-    fpos_t save;
     fpos_t pos;
     struct Student* s;
 
     if(search(file, match, &pos))
     {
         printf("Record can not be found.\n");
-        fsetpos(file, &save);
         return 0;
     }
 

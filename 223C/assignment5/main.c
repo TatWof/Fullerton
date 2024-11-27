@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
     printf("Welcome to Student Record Manager.\nAll data will be stored in \'academic.bin\'.\n\n");
 
 
-    printf("Enter [a] to add, [d] to delete, [f] to find, and [s] to show all records.\nEnter: ");
+    printf("Enter [a] to add, [d] to delete, [f] to find, [s] to show all records.\nUse [x] to exit the program.\nEnter: ");
     scanf("%c", &cbuf);
 
     while(1)
