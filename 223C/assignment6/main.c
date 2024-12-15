@@ -29,17 +29,16 @@ int main(int argc, char const *argv[])
 
     buffer = file2string(filename);
 
-    while(1)
+    while(buffer != NULL)
     {
         printf("Please enter the phrase to be searched: ");
-        scanf("%s", searchword);
-        if (searchword[0] == 0) break;
-        scanf("%c", &cbuf);
-
+        if (fgets(searchword, 2048, stdin) == NULL) break;
         
-
         findinstr(buffer, searchword);
     }
+    if (buffer == NULL)
+        printf("File was not found");
+    
 
     printf("\nThank you for using the program.\nGoodbye.\n");
 
