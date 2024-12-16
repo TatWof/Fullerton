@@ -20,7 +20,6 @@ extern int search(FILE*, unsigned int, fpos_t*);
 */
 int add(FILE* file)
 {
-    fpos_t save;
     fpos_t pos;
     struct Student s;
     char buffer;
