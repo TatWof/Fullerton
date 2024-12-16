@@ -40,14 +40,15 @@ int show(FILE* file)
             i++;
         }
         
+        
         fseek(file, 128, SEEK_CUR);
     }
+    s[i] = NULL;
 
     if(showData(s, i)) printf("No records found\n");
     printf("[End of Records]\n");
     for (size_t i = 0; s[i] != NULL; i++)
         free(s[i]);
-    
     
     return 0;
 }

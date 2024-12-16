@@ -53,5 +53,6 @@ struct Student* get(FILE* file, fpos_t* pos)
     fread(&stu->phone, sizeof(long long), 1, file);
     fread(&stu->parking_cost, sizeof(float), 1, file);
     fread(&stu->ZIPcode, sizeof(int), 1, file);
+    fsetpos(file, pos);
     return stu;
 }

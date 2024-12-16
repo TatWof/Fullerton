@@ -25,27 +25,35 @@ int add(FILE* file)
     struct Student s;
     char buffer;
     char str[2048];
+    int i;
 
     fgetpos(file, &pos);
     while(1)
     {
         printf("enter name: ");
-        scanf("%s", s.name);
         scanf("%c", &buffer);
+        fgets(s.name, 30, stdin);
+        for (i = 0; i < 74 || s.name[i] != 0; i++)
+            if (s.name[i] == '\n') break;
+        s.name[i] = 0;
+        
 
         printf("enter CWID: ");
         scanf("%d", &s.CWID);
         while(1)
         {
-            if (!search(file, s.CWID, &pos)) break;
+            if (search(file, s.CWID, &pos)) break;
             printf("That number is taken\nPlease enter a new number: ");
             scanf("%d", &s.CWID);
         }
         
 
         printf("enter major: ");
-        scanf("%s", s.major);
         scanf("%c", &buffer);
+        fgets(s.major, 74, stdin);
+        for (i = 0; i < 74 || s.major[i] != 0; i++)
+            if (s.major[i] == '\n') break;
+        s.major[i] = 0;
 
         printf("enter class standing: ");
         scanf("%s", str);
